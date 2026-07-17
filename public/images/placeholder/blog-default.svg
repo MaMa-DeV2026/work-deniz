@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B3A5C"/>
+      <stop offset="100%" stop-color="#0F2640"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bd)"/>
+  <text x="600" y="380" text-anchor="middle" fill="#C0C0C0" font-family="Georgia, serif" font-size="18" letter-spacing="6" opacity="0.25">JOURNAL</text>
+  <line x1="560" y1="420" x2="640" y2="420" stroke="#C0C0C0" stroke-width="1" opacity="0.2"/>
+</svg>

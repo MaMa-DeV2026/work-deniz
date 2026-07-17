@@ -1,0 +1,6 @@
+{
+  "/api/admin/login/route": "app/api/admin/login/route.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/about/page": "app/[locale]/about/page.js"
+}

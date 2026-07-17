@@ -1,0 +1,29 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
+import { getSession } from '@/lib/auth';
+
+export async function GET() {
+  const session = await getSession();
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const contacts = await prisma.contact.findMany({ orderBy: { createdAt: 'desc' } });
+  return NextResponse.json({ contacts });
+}
+
+export async function PATCH(req: NextRequest) {
+  const session = await getSession();
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const body = await req.json();
+  const { id, read } = body;
+  if (!id) return NextResponse.json({ error: 'id required' }, { status: 400 });
+  const contact = await prisma.contact.update({ where: { id }, data: { read: Boolean(read) } });
+  return NextResponse.json({ contact });
+}
+
+export async function DELETE(req: NextRequest) {
+  const session = await getSession();
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const { id } = await req.json();
+  if (!id) return NextResponse.json({ error: 'id required' }, { status: 400 });
+  await prisma.contact.delete({ where: { id } });
+  return NextResponse.json({ success: true });
+}

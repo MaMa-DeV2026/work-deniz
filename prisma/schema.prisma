@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Collection {
+  id            String    @id @default(cuid())
+  name_fa       String
+  name_en       String
+  slug          String    @unique
+  description_fa String
+  description_en String
+  coverImage    String
+  sortOrder     Int       @default(0)
+  products      Product[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([slug])
+}
+
+model Product {
+  id               String     @id @default(cuid())
+  name_fa          String
+  name_en          String
+  collection       Collection @relation(fields: [collectionId], references: [id])
+  collectionId     String
+  material         String
+  movement         String
+  waterResistance  String
+  caseDiameter     String
+  description_fa   String
+  description_en   String
+  images           String[]
+  rating           Float      @default(5.0)
+  sortOrder        Int        @default(0)
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+
+  @@index([collectionId])
+  @@index([sortOrder])
+}
+
+model BlogPost {
+  id           String    @id @default(cuid())
+  title_fa     String
+  title_en     String
+  slug         String    @unique
+  excerpt_fa   String
+  excerpt_en   String
+  content_fa   String    @db.Text
+  content_en   String    @db.Text
+  coverImage   String
+  author       String    @default("رضا احمدی")
+  published    Boolean   @default(false)
+  publishedAt  DateTime?
+  readTime     Int       @default(5)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([slug])
+  @@index([published])
+  @@index([publishedAt])
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String   @db.Text
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([read])
+  @@index([createdAt])
+}
+
+model CareerApplication {
+  id         String   @id @default(cuid())
+  name       String
+  email      String
+  phone      String
+  position   String
+  message    String   @db.Text
+  resumeUrl  String?
+  status     String   @default("new")
+  createdAt  DateTime @default(now())
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Location {
+  id         String   @id @default(cuid())
+  city_fa    String
+  city_en    String
+  address_fa String
+  address_en String
+  phone      String
+  isActive   Boolean  @default(false)
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([sortOrder])
+}

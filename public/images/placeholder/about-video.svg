@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="av" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B3A5C"/>
+      <stop offset="100%" stop-color="#0F2640"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#av)"/>
+  <circle cx="800" cy="420" r="50" fill="none" stroke="#C0C0C0" stroke-width="2" opacity="0.3"/>
+  <polygon points="795,400 795,440 825,420" fill="#C0C0C0" opacity="0.25"/>
+  <text x="800" y="520" text-anchor="middle" fill="#C0C0C0" font-family="Georgia, serif" font-size="14" letter-spacing="5" opacity="0.2">COMING SOON</text>
+</svg>

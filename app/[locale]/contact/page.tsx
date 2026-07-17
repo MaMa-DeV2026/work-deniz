@@ -4,7 +4,8 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import FadeIn from '@/components/animations/FadeIn';
 import ContactForm from './ContactForm';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const title = locale === 'fa' ? 'تماس با ما' : 'Contact Us';
   const description = locale === 'fa'
     ? 'با تیم دنیز در ارتباط باشید. یزد، ایران. info@denizwatch.com'
@@ -17,7 +18,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function ContactPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   unstable_setRequestLocale(locale);
   const isFa = (await getLocale()) === 'fa';
 

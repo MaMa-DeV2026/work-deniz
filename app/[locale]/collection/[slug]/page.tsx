@@ -15,10 +15,11 @@ export async function generateStaticParams() {
 }
 
 export default async function CollectionDetailPage({
-  params: { locale, slug },
+  params,
 }: {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }>;
 }) {
+  const { locale, slug } = await params;
   unstable_setRequestLocale(locale);
   const t = await getTranslations('products');
   const isFa = locale === 'fa';

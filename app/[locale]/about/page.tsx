@@ -39,7 +39,8 @@ const VALUES = [
   },
 ];
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const title = locale === 'fa' ? 'درباره دنیز' : 'About DENIZ';
   const description = locale === 'fa'
     ? 'دنیز در دل شهر یزد، جایی که زمان با هنر گره خورده است، متولد شد. داستان ما را بخوانید.'
@@ -52,7 +53,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function AboutPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   unstable_setRequestLocale(locale);
   const isFa = (await getLocale()) === 'fa';
 

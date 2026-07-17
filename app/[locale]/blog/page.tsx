@@ -6,7 +6,8 @@ import BlogCard from '@/components/blog/BlogCard';
 
 export const revalidate = 900;
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const title = locale === 'fa' ? 'مجله دنیز' : 'DENIZ Journal';
   const description = locale === 'fa'
     ? 'مجله دنیز — داستان‌هایی از دنیای ساعت، هنر و زمان.'
@@ -19,7 +20,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function BlogPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   unstable_setRequestLocale(locale);
   const isFa = (await getLocale()) === 'fa';
 

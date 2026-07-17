@@ -21,10 +21,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({
-  params: { locale, id },
+  params,
 }: {
-  params: { locale: string; id: string };
+  params: Promise<{ locale: string; id: string }>;
 }): Promise<Metadata> {
+  const { locale, id } = await params;
   const product = await prisma.product.findUnique({ where: { id }, include: { collection: true } });
   if (!product) return { title: 'DENIZ Watch' };
   const name = locale === 'fa' ? product.name_fa : product.name_en;
@@ -44,10 +45,11 @@ export async function generateMetadata({
 }
 
 export default async function ProductDetailPage({
-  params: { locale, id },
+  params,
 }: {
-  params: { locale: string; id: string };
+  params: Promise<{ locale: string; id: string }>;
 }) {
+  const { locale, id } = await params;
   unstable_setRequestLocale(locale);
   const isFa = (await getLocale()) === 'fa';
 

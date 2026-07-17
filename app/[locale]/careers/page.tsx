@@ -4,7 +4,8 @@ import FadeIn from '@/components/animations/FadeIn';
 import Card from '@/components/ui/Card';
 import CareersForm from './CareersForm';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const title = locale === 'fa' ? 'همکاری با دنیز' : 'Careers at DENIZ';
   const description = locale === 'fa'
     ? 'به تیم دنیز بپیوندید. فرصت‌های شغلی در شرکت ساعت‌سازی دنیز.'
@@ -17,7 +18,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function CareersPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function CareersPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   unstable_setRequestLocale(locale);
   const t = await getTranslations('careers');
   const isFa = (await getLocale()) === 'fa';

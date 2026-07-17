@@ -12,7 +12,8 @@ import TestimonialsSlider from '@/components/sections/TestimonialsSlider';
 
 const siteUrl = 'https://denizwatch.com';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const isFa = locale === 'fa';
   return {
     alternates: { canonical: `${siteUrl}/${locale}` },
@@ -27,7 +28,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   unstable_setRequestLocale(locale);
 
   const organizationJsonLd = {

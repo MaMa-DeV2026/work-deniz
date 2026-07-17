@@ -6,7 +6,8 @@ import { LinkButton } from '@/components/ui/Button';
 import LocationsSection from '@/components/sections/LocationsSection';
 import { Check, X } from 'lucide-react';
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const title = locale === 'fa' ? 'گارانتی دنیز' : 'DENIZ Warranty';
   const description = locale === 'fa'
     ? 'گارانتی دو ساله دنیز برای تمامی محصولات. شرایط، پوشش و مراحل استفاده از گارانتی.'
@@ -19,7 +20,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function WarrantyPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function WarrantyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   unstable_setRequestLocale(locale);
   const t = await getTranslations('warranty');
   const isFa = (await getLocale()) === 'fa';

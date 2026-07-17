@@ -5,7 +5,8 @@ import CollectionView from '@/components/collection/CollectionView';
 
 export const revalidate = 1800;
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const title = locale === 'fa' ? 'کالکشن‌های ما' : 'Our Collections';
   const description = locale === 'fa'
     ? 'کالکشن‌های انحصاری دنیز — هر قطعه داستانی از هنر و دقت.'
@@ -18,7 +19,8 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default async function CollectionsPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function CollectionsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   unstable_setRequestLocale(locale);
   const isFa = (await getLocale()) === 'fa';
 

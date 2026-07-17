@@ -7,14 +7,8 @@ import FeaturedCollections from '@/components/sections/FeaturedCollections';
 const BrandStatement = dynamic(() => import('@/components/sections/BrandStatement'));
 const StatsSection = dynamic(() => import('@/components/sections/StatsSection'));
 const LocationsSection = dynamic(() => import('@/components/sections/LocationsSection'));
-const FAQSection = dynamic(() => import('@/components/sections/FAQSection'), {
-  ssr: false,
-  loading: () => <section className="py-16 md:py-24" aria-hidden="true" />,
-});
-const TestimonialsSlider = dynamic(() => import('@/components/sections/TestimonialsSlider'), {
-  ssr: false,
-  loading: () => <section className="bg-white py-16 md:py-24" aria-hidden="true" />,
-});
+import FAQSection from '@/components/sections/FAQSection';
+import TestimonialsSlider from '@/components/sections/TestimonialsSlider';
 
 const siteUrl = 'https://denizwatch.com';
 

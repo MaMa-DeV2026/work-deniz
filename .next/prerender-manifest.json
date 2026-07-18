@@ -132,7 +132,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/en/contact": {
+    "/en/collection": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -144,9 +144,10 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/[locale]/contact",
-      "dataRoute": "/en/contact.rsc",
+      "initialRevalidateSeconds": 1800,
+      "initialExpireSeconds": 31536000,
+      "srcRoute": "/[locale]/collection",
+      "dataRoute": "/en/collection.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -156,7 +157,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/fa/contact": {
+    "/fa/collection": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -168,57 +169,10 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/[locale]/contact",
-      "dataRoute": "/fa/contact.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/en": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/[locale]",
-      "dataRoute": "/en.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/fa": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/[locale]",
-      "dataRoute": "/fa.rsc",
+      "initialRevalidateSeconds": 1800,
+      "initialExpireSeconds": 31536000,
+      "srcRoute": "/[locale]/collection",
+      "dataRoute": "/fa/collection.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -326,7 +280,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/admin/login": {
+    "/en": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -339,8 +293,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/admin/login",
-      "dataRoute": "/admin/login.rsc",
+      "srcRoute": "/[locale]",
+      "dataRoute": "/en.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -350,7 +304,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/en/collection": {
+    "/fa": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -362,35 +316,9 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": 1800,
-      "initialExpireSeconds": 31536000,
-      "srcRoute": "/[locale]/collection",
-      "dataRoute": "/en/collection.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/fa/collection": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": 1800,
-      "initialExpireSeconds": 31536000,
-      "srcRoute": "/[locale]/collection",
-      "dataRoute": "/fa/collection.rsc",
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]",
+      "dataRoute": "/fa.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -447,6 +375,78 @@
         "x-next-revalidated-tags",
         "x-next-revalidate-tag-token"
       ]
+    },
+    "/admin/login": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/admin/login",
+      "dataRoute": "/admin/login.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/en/contact": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/contact",
+      "dataRoute": "/en/contact.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/fa/contact": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/contact",
+      "dataRoute": "/fa/contact.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
     }
   },
   "dynamicRoutes": {
@@ -475,7 +475,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/[locale]/contact": {
+    "/[locale]/collection": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -487,35 +487,10 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "routeRegex": "^/([^/]+?)/contact(?:/)?$",
-      "dataRoute": "/[locale]/contact.rsc",
+      "routeRegex": "^/([^/]+?)/collection(?:/)?$",
+      "dataRoute": "/[locale]/collection.rsc",
       "fallback": null,
-      "dataRouteRegex": "^/([^/]+?)/contact\\.rsc$",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/[locale]": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "routeRegex": "^/([^/]+?)(?:/)?$",
-      "dataRoute": "/[locale].rsc",
-      "fallback": null,
-      "dataRouteRegex": "^/([^/]+?)\\.rsc$",
+      "dataRouteRegex": "^/([^/]+?)/collection\\.rsc$",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -575,7 +550,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/[locale]/collection": {
+    "/[locale]": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -587,10 +562,10 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "routeRegex": "^/([^/]+?)/collection(?:/)?$",
-      "dataRoute": "/[locale]/collection.rsc",
+      "routeRegex": "^/([^/]+?)(?:/)?$",
+      "dataRoute": "/[locale].rsc",
       "fallback": null,
-      "dataRouteRegex": "^/([^/]+?)/collection\\.rsc$",
+      "dataRouteRegex": "^/([^/]+?)\\.rsc$",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -625,7 +600,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/[locale]/blog/[slug]": {
+    "/[locale]/contact": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -637,10 +612,10 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "routeRegex": "^/([^/]+?)/blog/([^/]+?)(?:/)?$",
-      "dataRoute": "/[locale]/blog/[slug].rsc",
+      "routeRegex": "^/([^/]+?)/contact(?:/)?$",
+      "dataRoute": "/[locale]/contact.rsc",
       "fallback": null,
-      "dataRouteRegex": "^/([^/]+?)/blog/([^/]+?)\\.rsc$",
+      "dataRouteRegex": "^/([^/]+?)/contact\\.rsc$",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -691,6 +666,31 @@
       "dataRoute": "/[locale]/collection/[slug].rsc",
       "fallback": null,
       "dataRouteRegex": "^/([^/]+?)/collection/([^/]+?)\\.rsc$",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/[locale]/blog/[slug]": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "routeRegex": "^/([^/]+?)/blog/([^/]+?)(?:/)?$",
+      "dataRoute": "/[locale]/blog/[slug].rsc",
+      "fallback": null,
+      "dataRouteRegex": "^/([^/]+?)/blog/([^/]+?)\\.rsc$",
       "allowHeader": [
         "host",
         "x-matched-path",

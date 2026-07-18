@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { unstable_setRequestLocale, getLocale } from 'next-intl/server';
 import { prisma } from '@/lib/prisma';
+import type { Product } from '@/lib/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import StarRating from '@/components/ui/StarRating';
@@ -17,7 +18,7 @@ export const revalidate = 1800;
 
 export async function generateStaticParams() {
   const products = await prisma.product.findMany();
-  return products.map((p) => ({ id: p.id } as const));
+  return products.map((p: Product) => ({ id: p.id }));
 }
 
 export async function generateMetadata({

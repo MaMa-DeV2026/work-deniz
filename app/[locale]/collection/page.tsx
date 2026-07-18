@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { unstable_setRequestLocale, getLocale } from 'next-intl/server';
 import { prisma } from '@/lib/prisma';
+import type { CollectionWithProducts, Product } from '@/lib/types';
 import CollectionView from '@/components/collection/CollectionView';
 
 export const revalidate = 1800;
@@ -29,10 +30,10 @@ export default async function CollectionsPage({ params }: { params: Promise<{ lo
     include: { products: { orderBy: { sortOrder: 'asc' } } },
   });
 
-  const collectionsData = collections.map((c: (typeof collections)[number]) => ({ id: c.id, name: isFa ? c.name_fa : c.name_en }));
+  const collectionsData = collections.map((c: CollectionWithProducts) => ({ id: c.id, name: isFa ? c.name_fa : c.name_en }));
 
   const products = collections.flatMap((c) =>
-    c.products.map((p: (typeof c.products)[number]) => ({
+    c.products.map((p: Product) => ({
       id: p.id,
       name: isFa ? p.name_fa : p.name_en,
       collection: isFa ? c.name_fa : c.name_en,

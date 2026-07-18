@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { unstable_setRequestLocale, getLocale } from 'next-intl/server';
 import { prisma } from '@/lib/prisma';
+import type { BlogPost } from '@/lib/types';
 import Image from 'next/image';
 import { formatDate } from '@/lib/utils';
 import FadeIn from '@/components/animations/FadeIn';
@@ -11,7 +12,7 @@ export const revalidate = 900;
 
 export async function generateStaticParams() {
   const posts = await prisma.blogPost.findMany({ where: { published: true } });
-  return posts.map((p: { slug: string }) => ({ slug: p.slug }));
+  return posts.map((p: BlogPost) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -144,7 +145,7 @@ export default async function BlogPostPage({
             {isFa ? 'مطالب مرتبط' : 'Related Articles'}
           </h2>
           <div className="mt-8 grid gap-10 md:grid-cols-3">
-            {related.map((r: (typeof related)[number]) => (
+            {related.map((r: BlogPost) => (
               <BlogCard key={r.id} post={r} locale={locale} isFa={isFa} />
             ))}
           </div>

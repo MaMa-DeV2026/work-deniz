@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { unstable_setRequestLocale, getLocale } from 'next-intl/server';
 import { prisma } from '@/lib/prisma';
+import type { BlogPost } from '@/lib/types';
 import FadeIn from '@/components/animations/FadeIn';
 import BlogCard from '@/components/blog/BlogCard';
 
@@ -61,7 +62,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
       {rest.length > 0 && (
         <section className="container-luxury pb-24">
           <div className="grid gap-10 md:grid-cols-2">
-            {rest.map((post: (typeof rest)[number], i: number) => (
+            {rest.map((post: BlogPost, i: number) => (
               <FadeIn key={post.id} delay={(i % 2) * 0.05}>
                 <BlogCard post={post} locale={locale} isFa={isFa} />
               </FadeIn>

@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { unstable_setRequestLocale, getTranslations } from 'next-intl/server';
 import { getLocale } from 'next-intl/server';
 import { prisma } from '@/lib/prisma';
+import type { CollectionWithProducts, Product } from '@/lib/types';
 import { LinkButton } from '@/components/ui/Button';
 import FadeIn from '@/components/animations/FadeIn';
 import Card from '@/components/ui/Card';
@@ -11,7 +12,7 @@ export const revalidate = 1800;
 
 export async function generateStaticParams() {
   const collections = await prisma.collection.findMany();
-  return collections.map((c) => ({ slug: c.slug } as const));
+  return collections.map((c) => ({ slug: c.slug }));
 }
 
 export default async function CollectionDetailPage({
@@ -43,7 +44,7 @@ export default async function CollectionDetailPage({
       </FadeIn>
 
       <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {collection.products.map((p: (typeof collection.products)[number]) => (
+        {collection.products.map((p: Product) => (
           <FadeIn key={p.id}>
             <Card hover padding="none" className="overflow-hidden">
               <div className="relative aspect-square w-full overflow-hidden bg-surface">

@@ -49,3 +49,4 @@ No,Category,Guideline,Description,Do,Don't,Code Good,Code Bad,Severity,Docs URL
 48,Architecture,Use MVVM pattern,Separate view and logic,ViewModel for business logic,Logic in View,ObservableObject ViewModel,@State for complex logic,Medium,
 49,Architecture,Keep views dumb,Views display view model state,View reads from ViewModel,Business logic in View,view.items from vm.items,Complex filtering in View,Medium,
 50,Architecture,Use dependency injection,Inject dependencies for testing,Initialize with dependencies,Hard-coded dependencies,init(service: ServiceProtocol),let service = RealService(),Medium,
+ّّ

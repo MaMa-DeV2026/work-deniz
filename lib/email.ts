@@ -1,6 +1,12 @@
 import { Resend } from 'resend';
-console.log("RESEND_API_KEY:", process.env.RESEND_API_KEY);
-const resend = new Resend(process.env.RESEND_API_KEY);
+
+let _resend: Resend | null = null;
+function getResend(): Resend {
+  if (!_resend) {
+    _resend = new Resend(process.env.RESEND_API_KEY);
+  }
+  return _resend;
+}
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'mamaddev6@gmail.com';
 
@@ -22,7 +28,7 @@ interface CareerEmailData {
 
 export async function sendContactEmail(data: ContactEmailData): Promise<boolean> {
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: 'DENIZ Watch <onboarding@resend.dev>',
       to: ADMIN_EMAIL,
       subject: `New Contact: ${data.subject}`,
@@ -49,7 +55,7 @@ export async function sendContactEmail(data: ContactEmailData): Promise<boolean>
 
 export async function sendCareerEmail(data: CareerEmailData): Promise<boolean> {
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: 'DENIZ Watch <onboarding@resend.dev>',
       to: ADMIN_EMAIL,
       subject: `New Career Application: ${data.position}`,
@@ -78,7 +84,7 @@ export async function sendCareerEmail(data: CareerEmailData): Promise<boolean> {
 
 export async function sendContactConfirmation(data: ContactEmailData): Promise<boolean> {
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: 'DENIZ Watch <onboarding@resend.dev>',
       to: data.email,
       subject: 'پیام شما دریافت شد - DENIZ Watch',
@@ -103,7 +109,7 @@ export async function sendContactConfirmation(data: ContactEmailData): Promise<b
 
 export async function sendCareerConfirmation(data: CareerEmailData): Promise<boolean> {
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: 'DENIZ Watch <onboarding@resend.dev>',
       to: data.email,
       subject: 'درخواست استخدام شما دریافت شد - DENIZ Watch',

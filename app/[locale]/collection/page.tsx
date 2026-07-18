@@ -29,10 +29,10 @@ export default async function CollectionsPage({ params }: { params: Promise<{ lo
     include: { products: { orderBy: { sortOrder: 'asc' } } },
   });
 
-  const collectionsData = collections.map((c) => ({ id: c.id, name: isFa ? c.name_fa : c.name_en }));
+  const collectionsData = collections.map((c: (typeof collections)[number]) => ({ id: c.id, name: isFa ? c.name_fa : c.name_en }));
 
   const products = collections.flatMap((c) =>
-    c.products.map((p) => ({
+    c.products.map((p: (typeof c.products)[number]) => ({
       id: p.id,
       name: isFa ? p.name_fa : p.name_en,
       collection: isFa ? c.name_fa : c.name_en,

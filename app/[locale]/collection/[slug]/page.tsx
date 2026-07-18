@@ -11,7 +11,7 @@ export const revalidate = 1800;
 
 export async function generateStaticParams() {
   const collections = await prisma.collection.findMany();
-  return collections.map((c) => ({ slug: c.slug }));
+  return collections.map((c) => ({ slug: c.slug } as const));
 }
 
 export default async function CollectionDetailPage({
@@ -43,7 +43,7 @@ export default async function CollectionDetailPage({
       </FadeIn>
 
       <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {collection.products.map((p) => (
+        {collection.products.map((p: (typeof collection.products)[number]) => (
           <FadeIn key={p.id}>
             <Card hover padding="none" className="overflow-hidden">
               <div className="relative aspect-square w-full overflow-hidden bg-surface">

@@ -11,7 +11,7 @@ export const revalidate = 900;
 
 export async function generateStaticParams() {
   const posts = await prisma.blogPost.findMany({ where: { published: true } });
-  return posts.map((p) => ({ slug: p.slug }));
+  return posts.map((p: { slug: string }) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -132,7 +132,7 @@ export default async function BlogPostPage({
         <div className="my-8 h-px bg-accent" />
 
         <div className="blog-prose">
-          {paragraphs.map((p, i) => (
+          {paragraphs.map((p: string, i: number) => (
             <p key={i}>{p}</p>
           ))}
         </div>
@@ -144,7 +144,7 @@ export default async function BlogPostPage({
             {isFa ? 'مطالب مرتبط' : 'Related Articles'}
           </h2>
           <div className="mt-8 grid gap-10 md:grid-cols-3">
-            {related.map((r) => (
+            {related.map((r: (typeof related)[number]) => (
               <BlogCard key={r.id} post={r} locale={locale} isFa={isFa} />
             ))}
           </div>

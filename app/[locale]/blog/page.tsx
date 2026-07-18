@@ -61,7 +61,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
       {rest.length > 0 && (
         <section className="container-luxury pb-24">
           <div className="grid gap-10 md:grid-cols-2">
-            {rest.map((post, i) => (
+            {rest.map((post: (typeof rest)[number], i: number) => (
               <FadeIn key={post.id} delay={(i % 2) * 0.05}>
                 <BlogCard post={post} locale={locale} isFa={isFa} />
               </FadeIn>

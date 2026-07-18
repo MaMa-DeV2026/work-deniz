@@ -17,7 +17,7 @@ export const revalidate = 1800;
 
 export async function generateStaticParams() {
   const products = await prisma.product.findMany();
-  return products.map((p) => ({ id: p.id }));
+  return products.map((p) => ({ id: p.id } as const));
 }
 
 export async function generateMetadata({
@@ -119,7 +119,7 @@ export default async function ProductDetailPage({
           <div className="my-6 h-px bg-accent" />
 
           <div className="divide-y divide-[#F0F0F0]">
-            {specs.map((s) => (
+            {specs.map((s: (typeof specs)[number]) => (
               <div key={s.label} className="flex items-center justify-between py-3">
                 <span className="text-[12px] uppercase text-text-muted">{s.label}</span>
                 <span className="text-[14px] text-text-dark">{s.value}</span>

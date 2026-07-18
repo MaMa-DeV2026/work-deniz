@@ -7,11 +7,12 @@
   },
   "scripts": {
     "dev": "node scripts/dev.mjs",
-    "build": "opennextjs-cloudflare build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
+      "deploy": "opennextjs-cloudflare build",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
     "db:seed": "ts-node --transpile-only --project prisma/tsconfig.seed.json prisma/seed.ts",

@@ -6,6 +6,7 @@
     "seed": "ts-node --transpile-only --project prisma/tsconfig.seed.json prisma/seed.ts"
   },
   "scripts": {
+    "postinstall": "prisma generate",
     "dev": "node scripts/dev.mjs",
     "build": "next build",
     "start": "next start",

@@ -18,6 +18,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  serverExternalPackages: ['@prisma/client', 'pg'],
 };
 
 let config = withNextIntl(nextConfig);

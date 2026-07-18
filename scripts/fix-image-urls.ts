@@ -32,7 +32,7 @@ async function main() {
 
   // --- Products ---
   const products = await prisma.product.findMany()
-  const manualProducts = []
+  const manualProducts: { id: string; name_en: string; images: string[] }[] = []
   for (const p of products) {
     const newImages = replaceUnsplashInArray(p.images, '/images/placeholder/product-default.svg')
     const hasChanges = newImages.some((url, i) => url !== p.images[i])

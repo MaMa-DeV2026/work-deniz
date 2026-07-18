@@ -23,8 +23,8 @@
   "/[locale]/contact/page": "/[locale]/contact",
   "/[locale]/page": "/[locale]",
   "/[locale]/warranty/page": "/[locale]/warranty",
-  "/[locale]/blog/page": "/[locale]/blog",
   "/[locale]/blog/[slug]/page": "/[locale]/blog/[slug]",
+  "/[locale]/blog/page": "/[locale]/blog",
   "/[locale]/collection/[slug]/page": "/[locale]/collection/[slug]",
   "/[locale]/collection/page": "/[locale]/collection",
   "/[locale]/product/[id]/page": "/[locale]/product/[id]",
@@ -32,8 +32,8 @@
   "/admin/blog/page": "/admin/blog",
   "/admin/careers/page": "/admin/careers",
   "/admin/collections/page": "/admin/collections",
-  "/admin/contacts/page": "/admin/contacts",
   "/admin/dashboard/page": "/admin/dashboard",
+  "/admin/contacts/page": "/admin/contacts",
   "/admin/locations/page": "/admin/locations",
   "/admin/products/page": "/admin/products"
 }

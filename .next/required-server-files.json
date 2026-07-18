@@ -99,7 +99,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\web\\office WORK WEB",
+    "outputFileTracingRoot": "C:\\web\\denizsa",
     "experimental": {
       "useSkewCookie": false,
       "cacheLife": {
@@ -290,10 +290,10 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.mjs",
     "turbopack": {
-      "root": "C:\\web\\office WORK WEB"
+      "root": "C:\\web\\denizsa"
     }
   },
-  "appDir": "C:\\web\\office WORK WEB",
+  "appDir": "C:\\web\\denizsa",
   "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",

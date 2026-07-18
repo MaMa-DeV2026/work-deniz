@@ -1,4 +1,4 @@
-// File: C:\web\office WORK WEB\app\api\admin\products\route.ts
+// File: C:\web\denizsa\app\api\admin\products\route.ts
 import * as entry from '../../../../../../app/api/admin/products/route.js'
 import type { NextRequest } from 'next/server.js'
 

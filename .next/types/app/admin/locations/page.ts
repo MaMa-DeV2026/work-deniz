@@ -1,4 +1,4 @@
-// File: C:\web\office WORK WEB\app\admin\locations\page.tsx
+// File: C:\web\denizsa\app\admin\locations\page.tsx
 import * as entry from '../../../../../app/admin/locations/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

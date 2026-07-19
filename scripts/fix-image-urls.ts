@@ -1,6 +1,10 @@
 import { PrismaClient } from '@prisma/client'
+import { PrismaPg } from '@prisma/adapter-pg'
 
-const prisma = new PrismaClient()
+const adapter = new PrismaPg({
+  connectionString: process.env.DATABASE_URL!,
+})
+const prisma = new PrismaClient({ adapter } as never)
 
 function replaceUnsplash(url: string | null | undefined, placeholder: string): string {
   if (!url || !url.includes('unsplash.com')) return url || ''

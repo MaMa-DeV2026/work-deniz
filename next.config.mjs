@@ -6,8 +6,9 @@ const withNextIntl = createNextIntlPlugin('./lib/i18n.ts');
 const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
-    // TODO: Add remotePatterns here when using real external images
-    // remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }],
+    remotePatterns: [
+      { protocol: 'https', hostname: '**.blob.vercel-storage.com' },
+    ],
   },
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react'],

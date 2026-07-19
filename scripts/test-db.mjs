@@ -1,5 +1,6 @@
 import EmbeddedPostgres from 'embedded-postgres';
 import { PrismaClient } from '@prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
 
 // Fix MINGW DLL conflict: native postgres.exe must not load msys/mingw runtimes.
 const cleanPath = (process.env.PATH || '')
@@ -26,7 +27,8 @@ async function main() {
   console.log('[test] create database deniz_watch...');
   await pg.createDatabase('deniz_watch');
 
-  const prisma = new PrismaClient();
+  const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
+  const prisma = new PrismaClient({ adapter });
   await prisma.$connect();
   const res = await prisma.$queryRaw`SELECT 1 as ok`;
   console.log('[test] prisma connected:', JSON.stringify(res));

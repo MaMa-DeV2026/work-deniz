@@ -75,7 +75,9 @@ async function main() {
   await run('npx', ['prisma', 'db', 'push', '--skip-generate', '--accept-data-loss']);
 
   // ── 4. Seed only if empty ──
-  const prisma = new PrismaClient();
+  const { PrismaPg } = await import('@prisma/adapter-pg');
+  const adapter = new PrismaPg({ connectionString: DATABASE_URL });
+  const prisma = new PrismaClient({ adapter });
   const count = await prisma.collection.count();
   if (count === 0) {
     console.log('[dev] database empty — seeding...');

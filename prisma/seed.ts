@@ -7,11 +7,28 @@ const adapter = new PrismaPg({
 const prisma = new PrismaClient({ adapter } as never);
 
 const IMG = (id: string) => `/images/placeholder/${id}`;
+const UPLOAD = (id: string) => `/uploads/${id}`;
 
-const COLLECTION_IMAGES: Record<string, string> = {
-  classic: 'collection-classic.svg',
-  ocean: 'collection-ocean.svg',
-  night: 'collection-night.svg',
+// Real product images (mapped by visual inspection)
+const PRODUCT_IMAGES: Record<string, string> = {
+  'Classic Silver':  '550f3103-ba78-4ee6-9aaf-0a452cf1a3cd.png',
+  'Classic Black':   '079a49ab-4634-46b9-98cb-c5bdd30d13a4.png',
+  'Classic Gold':    '16f524af-6a33-4989-9238-bdfa60a16efa.png',
+  'Classic Ceramic': '5ef796bd-3d28-4838-a88d-72011fe3751d.png',
+  'Ocean Blue':      '19f515f2-8acd-4d65-bf12-99d81bd7f130.png',
+  'Ocean Green':     '9aaf61b6-2594-4953-8554-4ba45ea40e79.png',
+  'Ocean Carbon':    'c7325686-6788-4fc6-8314-704eb88318b2.png',
+  'Ocean Coral':     '869c51ce-304e-4e8b-a40b-960be9c48c0f.png',
+  'Night Dark':      'b6b60dc7-b9ef-499b-92f1-57f04a2f6e53.png',
+  'Night Silver':    'b9664d32-bb7e-402c-8ffd-167cec0f818b.png',
+  'Night Violet':    'b6b60dc7-b9ef-499b-92f1-57f04a2f6e53.png',
+  'Night Gold':      'b9664d32-bb7e-402c-8ffd-167cec0f818b.png',
+};
+
+const COLLECTION_COVERS: Record<string, string> = {
+  classic: '550f3103-ba78-4ee6-9aaf-0a452cf1a3cd.png',
+  ocean:   '19f515f2-8acd-4d65-bf12-99d81bd7f130.png',
+  night:   'b6b60dc7-b9ef-499b-92f1-57f04a2f6e53.png',
 };
 
 async function main() {
@@ -34,7 +51,7 @@ async function main() {
         'مجموعه کلاسیک دنیز، بازتابی از اصالت و وقار با بدنه‌ای از استیل ضدزنگ و طراحی همیشگی.',
       description_en:
         'The DENIZ Classic collection — a reflection of heritage and elegance with stainless steel cases and timeless design.',
-      coverImage: IMG(COLLECTION_IMAGES.classic),
+      coverImage: UPLOAD(COLLECTION_COVERS.classic),
       sortOrder: 0,
     },
   });
@@ -48,7 +65,7 @@ async function main() {
         'مجموعه اقیانوس برای ماجراجویان دریا طراحی شده؛ مقاومت بالا در برابر آب و الهام از ژرفای اقیانوس.',
       description_en:
         'The DENIZ Ocean collection is designed for sea adventurers — high water resistance inspired by ocean depths.',
-      coverImage: IMG(COLLECTION_IMAGES.ocean),
+      coverImage: UPLOAD(COLLECTION_COVERS.ocean),
       sortOrder: 1,
     },
   });
@@ -62,7 +79,7 @@ async function main() {
         'مجموعه شب با صفحه تیره و جزئیات درخشان، برای لحظاتی که زمان در تاریکی می‌درخشد.',
       description_en:
         'The DENIZ Night collection with dark dials and luminous details — for moments when time shines in the dark.',
-      coverImage: IMG(COLLECTION_IMAGES.night),
+      coverImage: UPLOAD(COLLECTION_COVERS.night),
       sortOrder: 2,
     },
   });
@@ -241,10 +258,12 @@ async function main() {
 
   for (const p of productData) {
     const { img, ...rest } = p;
+    const realImg = PRODUCT_IMAGES[p.name_en];
+    const imgPath = realImg ? UPLOAD(realImg) : IMG(img);
     await prisma.product.create({
       data: {
         ...rest,
-        images: [IMG(img), IMG(img)],
+        images: [imgPath, imgPath],
       },
     });
   }
